@@ -3,25 +3,200 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Finance Products</title>
+    <style>
+      /* Reset default styling */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
+        color: #123156;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .banner {
+        background: rgba(18, 49, 86, 0.8);
+        backdrop-filter: blur(10px);
+        text-align: center;
+        padding: 20px;
+        position: sticky;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+      }
+
+      .banner img {
+        max-height: 50px;
+      }
+
+      h2,
+      h1,
+      input,
+      p {
+        margin-top: 20px;
+      }
+
+      h2,
+      h1 {
+        color: #123156;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      }
+
+      input[type="range"] {
+        width: 80%;
+        max-width: 600px;
+        height: 15px;
+        -webkit-appearance: none;
+        appearance: none;
+        background: rgba(18, 49, 86, 0.2);
+        border-radius: 10px;
+        outline: none;
+        padding: 0;
+        margin: 20px 0;
+      }
+
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        background: #123156;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+      }
+
+      input[type="range"]::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        background: #123156;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+      }
+
+      .dropdown-container {
+        width: 300px;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+      }
+
+      select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #123156;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        color: #123156;
+        font-size: 16px;
+      }
+
+      label {
+        color: #123156;
+        font-weight: bold;
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      p {
+        color: #123156;
+        font-size: 1rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      }
+
+      button[type="submit"] {
+        background-color: #123156;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #0f2747;
+      }
+
+      /* Responsive styles */
+      @media (max-width: 768px) {
+        select {
+          padding: 10px;
+          font-size: 14px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <h2>Finance Products Available</h2>
-    <h3>Select a Product</h3>
-    <form action="" method="POST">
-      <select name="product-dropdown" id="" class="">
-        {% for x in range(0,session["products-list"]|length): %}
-        <option value="{{session['id-list'][x]}}">
-          {{session["products-list"][x]}}
-        </option>
-        {% endfor %}
-      </select>
-      Enter Cash Price
-      <input type="number" name="cash-price-input" class="" />
-      Enter Deposit
-      <input type="number" name="deposit-input" class="" />
+    <div class="banner">
+      <img
+        src="https://images.squarespace-cdn.com/content/v1/61ab744aa0235375fe5bbeb9/01634e02-46f1-43b6-8f6b-91dd73abaf90/Hayball+Logo+SuperRes.png?format=1500w"
+        alt="Logo"
+      />
+    </div>
+    <h1>Finance Products</h2>
+    <h2>{{ session["bike_name"] }}, finance application</h2>
+    <h3>To begin your finance application please select an available finance product, then choose a depost amount</h3>
 
-      <input type="submit" value="submit" />
+    <form action="" method="POST">
+      <div class="dropdown-container">
+        <label for="product-dropdown">Select a Product</label>
+        <select name="product-dropdown" id="product-dropdown">
+          {% for x in range(0,session["products-list"]|length): %}
+          <option value="{{session['id-list'][x]}}">
+            {{session["products-list"][x]}}
+          </option>
+          {% endfor %}
+        </select>
+      </div>
+      <h2>Cash Price £{{session["cash-price"]}}</h2>
+
+      <h1>Enter a Deposit</h1>
+
+      <!-- Input slider with range from 0 to 15000 -->
+      <input type="range" id="slider" name="deposit-input" min={{
+      (session["cash-price"]|int//10) }} max={{ session["cash-price"]|int/2 }}
+      step="50" value="{{ (session["cash-price"]|int//10) }}">
+
+      <!-- Display the selected value -->
+      <p>
+        Selected value:
+        <span id="slider-value">{{ (session["cash-price"]|int//10) }}</span>
+      </p>
+
+      <button type="submit">Complete application on V12 Finance</button>
+
+      <script>
+        // Get the slider element and the span to display the value
+        const slider = document.getElementById("slider");
+        const sliderValue = document.getElementById("slider-value");
+
+        // Update the displayed value when the slider is moved
+        slider.addEventListener("input", function () {
+          sliderValue.textContent = slider.value;
+        });
+      </script>
     </form>
   </body>
 </html>
