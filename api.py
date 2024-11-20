@@ -74,7 +74,7 @@ def get_finance_products():
         payload["Order"]["Deposit"] = deposit_amount
         payload["Order"]["ProductGuid"] = product_guid
         payload["Order"]["ProductId"] = str(product_id)
-        payload["Order"]["SalesReference"] = bike+str(random.randint(0,999999))
+        payload["Order"]["SalesReference"] = bike_name+str(random.randint(0,999999))
 
         payload["Retailer"]["AuthenticationKey"] = os.getenv("AuthenticationKey")
         payload["Retailer"]["RetailerGuid"] = os.getenv("RetailerGuid")
