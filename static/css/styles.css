@@ -1,0 +1,435 @@
+/* Reset default styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.8),
+      rgba(224, 224, 224, 0.8)
+    ),
+    url("path/to/your/background-image.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  color: #123156;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin-bottom: 50px;
+  min-width: 100vw;
+  overflow-x: hidden;
+  padding: 0 0px; /* Add padding to the sides */
+  word-wrap: break-word; /* Ensure text breaks within its container */
+}
+
+.banner {
+  background: #123156;
+  backdrop-filter: blur(10px);
+  text-align: center;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.banner img {
+  max-height: 50px;
+  transition: transform 0.3s ease;
+}
+
+.banner img:hover {
+  transform: scale(1.1);
+}
+
+h2,
+h1,
+input,
+p {
+  margin-top: 20px;
+  text-align: center;
+  word-wrap: break-word; /* Ensure text breaks within its container */
+}
+
+h2,
+h1 {
+  color: #123156;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+input[type="range"] {
+  width: 80%;
+  max-width: 600px;
+  height: 15px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(18, 49, 86, 0.2);
+  border-radius: 10px;
+  outline: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #123156;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #123156;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-container {
+  width: 100%;
+  max-width: 350px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  text-align: center;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #123156;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  color: #123156;
+  font-size: 16px;
+}
+
+label {
+  color: #123156;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: block;
+  word-wrap: break-word; /* Ensure text breaks within its container */
+}
+
+p {
+  color: #123156;
+  font-size: 1rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+button,
+#lowestMonthlyPayments {
+  background-color: #123156;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0f2747;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #123156;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  color: #123156;
+  font-size: 16px;
+  margin-top: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #0f2747;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  select {
+    padding: 10px;
+    font-size: 14px;
+  }
+  body {
+    padding: 0 5px; /* Reduce padding on smaller screens */
+    width: 100vw; /* Ensure body width matches viewport width */
+  }
+  h3 {
+    font-size: 1rem; /* Make h3 text smaller on mobile */
+  }
+  .break-word {
+    word-wrap: break-word; /* Force text to break if it is outside its container */
+  }
+  .section {
+    padding: 2px; /* Reduce padding on .section for mobile */
+  }
+  .breakdown {
+    padding: 5px; /* Reduce padding on .breakdown for mobile */
+    word-wrap: break-word; /* Ensure text breaks within its container */
+    overflow-wrap: break-word; /* Ensure text breaks within its container */
+  }
+}
+
+@media (max-width: 500px) {
+  body {
+    padding: 0 2px; /* Further reduce padding on very small screens */
+    width: 100vw; /* Ensure body width matches viewport width */
+  }
+  .dropdown-container,
+  .section,
+  .breakdown {
+    width: 100%; /* Ensure full width usage */
+    max-width: none; /* Remove max-width constraint */
+  }
+  .section label {
+    width: 100%; /* Ensure labels do not overflow */
+  }
+  h3,
+  label {
+    font-size: 0.9rem; /* Make h3 text even smaller on very small screens */
+  }
+  .break-word {
+    word-wrap: break-word; /* Force text to break if it is outside its container */
+  }
+  .section {
+    padding: 0px; /* Reduce padding on .section for very small screens */
+  }
+  .breakdown {
+    padding: 0px; /* Reduce padding on .breakdown for very small screens */
+    word-wrap: break-word; /* Ensure text breaks within its container */
+    overflow-wrap: break-word; /* Ensure text breaks within its container */
+  }
+}
+
+@media (max-width: 430px) {
+  body {
+    padding: 0 2px; /* Further reduce padding on very small screens */
+    width: 100vw; /* Ensure body width matches viewport width */
+  }
+  .dropdown-container,
+  .section,
+  .breakdown {
+    width: 100%; /* Ensure full width usage */
+    max-width: none; /* Remove max-width constraint */
+  }
+  .section label {
+    width: 100%; /* Ensure labels do not overflow */
+  }
+  h3 {
+    font-size: 0.8rem; /* Make h3 text even smaller on very small screens */
+  }
+  .break-word {
+    word-wrap: break-word; /* Force text to break if it is outside its container */
+  }
+  .section {
+    padding: 2px; /* Reduce padding on .section for very small screens */
+  }
+  .breakdown {
+    padding: 5px; /* Reduce padding on .breakdown for very small screens */
+    word-wrap: break-word; /* Ensure text breaks within its container */
+    overflow-wrap: break-word; /* Ensure text breaks within its container */
+  }
+}
+
+/* V12 Styles */
+
+input[type="range"] {
+  -webkit-appearance: none;
+  border: 1px solid white;
+  width: 270px;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 270px;
+  height: 5px;
+  background: #ddd;
+  border: none;
+  border-radius: 3px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: goldenrod;
+  margin-top: -4px;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  background: #ccc;
+}
+
+input[type="range"]::-moz-range-track {
+  width: 270px;
+  height: 5px;
+  background: #ddd;
+  border: none;
+  border-radius: 3px;
+}
+
+input[type="range"]::-moz-range-thumb {
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: goldenrod;
+}
+
+/*hide the outline behind the border*/
+input[type="range"]:-moz-focusring {
+  outline: 1px solid white;
+  outline-offset: -1px;
+}
+
+input[type="range"]::-ms-track {
+  width: 270px;
+  height: 5px;
+  background: transparent;
+  border-color: transparent;
+  border-width: 6px 0;
+  color: transparent;
+}
+
+input[type="range"]::-ms-fill-lower {
+  background: #777;
+  border-radius: 10px;
+}
+
+input[type="range"]::-ms-fill-upper {
+  background: #ddd;
+  border-radius: 10px;
+}
+
+input[type="range"]::-ms-thumb {
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: goldenrod;
+}
+
+input[type="range"]:focus::-ms-fill-lower {
+  background: #888;
+}
+
+input[type="range"]:focus::-ms-fill-upper {
+  background: #ccc;
+}
+
+input[type="text"] {
+  width: 100px;
+}
+
+/* Body of CSS*/
+.body {
+  border: 1px solid #003c65;
+  border-radius: 10px;
+  width: 300px;
+  font: 14px/1.3 "Segoe UI", Arial, sans-serif;
+}
+
+.body .header {
+  padding: 5px;
+  background-color: #123156;
+  text-align: center;
+  border-radius: 10px 10px 0px 0px;
+  color: white;
+}
+
+.breakdown {
+  padding: 10px;
+  word-wrap: break-word; /* Ensure text breaks within its container */
+  overflow-wrap: break-word; /* Ensure text breaks within its container */
+}
+
+.section {
+  padding: 10px;
+}
+
+#lowestMonthlyPayments {
+  text-align: center;
+}
+
+.section a {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 2px;
+  background-color: grey;
+  color: white;
+  text-decoration: none;
+}
+
+.section label {
+  display: inline-block;
+  width: 400px;
+}
+
+#productsList {
+  max-width: 280px;
+}
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.go-back-button {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  background-color: #123156;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.go-back-button:hover {
+  background-color: #0f2747;
+}

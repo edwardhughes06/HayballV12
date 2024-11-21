@@ -4,160 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Finance Products</title>
-    <style>
-      /* Reset default styling */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      html,
-      body {
-        height: 100%;
-      }
-
-      body {
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
-        color: #123156;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-height: 100vh;
-      }
-
-      .banner {
-        background: rgba(18, 49, 86, 0.8);
-        backdrop-filter: blur(10px);
-        text-align: center;
-        padding: 20px;
-        position: sticky;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-      }
-
-      .banner img {
-        max-height: 50px;
-      }
-
-      h2,
-      h1,
-      input,
-      p {
-        margin-top: 20px;
-      }
-
-      h2,
-      h1 {
-        color: #123156;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-      }
-
-      input[type="range"] {
-        width: 80%;
-        max-width: 600px;
-        height: 15px;
-        -webkit-appearance: none;
-        appearance: none;
-        background: rgba(18, 49, 86, 0.2);
-        border-radius: 10px;
-        outline: none;
-        padding: 0;
-        margin: 20px 0;
-      }
-
-      input[type="range"]::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 25px;
-        height: 25px;
-        background: #123156;
-        border-radius: 50%;
-        cursor: pointer;
-        box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
-      }
-
-      input[type="range"]::-moz-range-thumb {
-        width: 25px;
-        height: 25px;
-        background: #123156;
-        border-radius: 50%;
-        cursor: pointer;
-        box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
-      }
-
-      .dropdown-container {
-        width: 300px;
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(10px);
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        margin-top: 20px;
-      }
-
-      select {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #123156;
-        border-radius: 5px;
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(10px);
-        color: #123156;
-        font-size: 16px;
-      }
-
-      label {
-        color: #123156;
-        font-weight: bold;
-        margin-bottom: 10px;
-        display: block;
-      }
-
-      p {
-        color: #123156;
-        font-size: 1rem;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-      }
-
-      button[type="submit"] {
-        background-color: #123156;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        margin-top: 20px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: background-color 0.3s ease;
-      }
-
-      button[type="submit"]:hover {
-        background-color: #0f2747;
-      }
-
-      /* Responsive styles */
-      @media (max-width: 768px) {
-        select {
-          padding: 10px;
-          font-size: 14px;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+    <script src="https://apply.v12finance.com/JavascriptGateway/JSCalc/CalculatorScript?retailerId=32682&amp;retailerGuid=faaad9a9-833b-4250-9e98-40b25687763b"></script>
+    <script src="/JavascriptGateway/bundles/thirdparty?v=5QtWcv6ISuMWICsKBqhFMFEfD24pdttNrxP0WKlNRv01"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}" type="text/javascript"></script>
   </head>
   <body>
     <div class="banner">
-      <img
+      <a href="https://hayballcyclesport.co.uk/" class="go-back-button">Return to shop</a>
+      <a href="https://hayballcyclesport.co.uk/"><img
         src="https://images.squarespace-cdn.com/content/v1/61ab744aa0235375fe5bbeb9/01634e02-46f1-43b6-8f6b-91dd73abaf90/Hayball+Logo+SuperRes.png?format=1500w"
         alt="Logo"
-      />
+        href="https://hayballcyclesport.co.uk/"
+      /></a>
+      
     </div>
-    <h1>Finance Products</h2>
-    <h2>{{ session["bike_name"] }}, finance application</h2>
-    <h3>To begin your finance application please select an available finance product, then choose a depost amount</h3>
+    <div class="center-content">
+<h2>Hayball Finance Platform</h2>
+    <h2>This is a finance application for: {{ session["bike_name"] }}</h2>
+    <h3>
+      To begin your finance application please select an available finance
+      product, then choose a deposit amount between 10% and 50%.
+      <br>To preview the finance options available, please use the calculator below.
+    </h3>
+    </div>
+    
 
     <form action="" method="POST">
       <div class="dropdown-container">
@@ -170,7 +44,8 @@
           {% endfor %}
         </select>
       </div>
-      <h2>Cash Price £{{session["cash-price"]}}</h2>
+      <div class="deposit-values center-content">
+<h2>Price of Bike: £{{session["cash-price"]}}</h2>
 
       <h1>Enter a Deposit</h1>
 
@@ -178,25 +53,88 @@
       <input type="range" id="slider" name="deposit-input" min={{
       (session["cash-price"]|int//10) }} max={{ session["cash-price"]|int/2 }}
       step="50" value="{{ (session["cash-price"]|int//10) }}">
+      
+      <input type="number" id="deposit-input" name="deposit-input" min={{ (session["cash-price"]|int//10) }} max={{ session["cash-price"]|int/2 }} step="1" value="{{ (session["cash-price"]|int//10) }}">
 
       <!-- Display the selected value -->
       <p>
-        Selected value:
+        Chosen deposit amount: £
         <span id="slider-value">{{ (session["cash-price"]|int//10) }}</span>
       </p>
 
-      <button type="submit">Complete application on V12 Finance</button>
+      <!-- Input field for deposit amount -->
 
+      <button type="submit">Complete application on V12 Finance</button>
+      </div>
+      
       <script>
         // Get the slider element and the span to display the value
-        const slider = document.getElementById("slider");
-        const sliderValue = document.getElementById("slider-value");
+const slider = document.getElementById("slider");
+const sliderValue = document.getElementById("slider-value");
+const depositInput = document.getElementById("deposit-input");
 
-        // Update the displayed value when the slider is moved
-        slider.addEventListener("input", function () {
-          sliderValue.textContent = slider.value;
-        });
+// Update the displayed value when the slider is moved
+slider.addEventListener("input", function () {
+  sliderValue.textContent = slider.value;
+  depositInput.value = slider.value;
+});
+
+// Update the slider value when the input field is changed
+depositInput.addEventListener("input", function () {
+  slider.value = depositInput.value;
+  sliderValue.textContent = depositInput.value;
+});
       </script>
+
     </form>
+
+    <div
+      class="section"
+      style="
+        border: 2px solid #123156;
+        border-radius: 10px;
+        margin-top: 20px;
+      "
+    >
+      <h2 style="font-size: 1.5rem; color: #123156">
+        Use this calculator to see which finance option suits your purchase.
+      </h2>
+
+      <div class="section">
+        <label>Cash Price (&pound):</label>
+        <input type="text" id="cashPrice" value="2000" />
+        <br />
+        <input type="range" id="cpRange" min="250" max="15000" value="2000" />
+      </div>
+      <div class="section">
+        <label>Deposit (%):</label>
+        <input type="text" maxlength="2" id="deposit" value="0" />
+        <br />
+        <input type="range" id="depRange" min="0" max="99" step="1" value="0" />
+      </div>
+      <div class="section">
+        Finance is subject to status. Terms and conditions apply.
+      </div>
+      <div class="section">
+        <select id="productsList"></select>
+      </div>
+      <div class="breakdown">
+        <label id="lblCashPrice"></label><br />
+        <label id="lblDeposit"></label><br />
+        <label id="lblAmountCredit"></label><br />
+        <label id="lblRepayable"></label><br />
+        <label id="lblApr"></label><br />
+        <label id="lblAnnualRate"></label><br />
+        <label id="lblArrangementFee"></label><br />
+        <label id="lblSettlementFee"></label><br />
+        <label id="lblTotalRepayable"></label><br />
+        <label id="lblBnpl"></label><br />
+      </div>
+        <button title="Click to select the finance product with the lowest monthly repayment" id="lowestMonthlyPayments" href="#">Lowest Monthly Repayment</a>
+      </div>
+    </div>
+
+      <button onclick="window.location.href='https://hayballcyclesport.co.uk/'">Return to shop</button>
+
   </body>
 </html>

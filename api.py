@@ -7,6 +7,7 @@ import xmltodict
 import random
 from dotenv import load_dotenv
 import os
+import datetime
 
 # Load environment variables from .env file
 load_dotenv()
@@ -26,9 +27,21 @@ api = Api(app)
 
 @app.route('/finance_products', methods=['GET', 'POST'])
 def get_finance_products():
+    while True:
+        bike_name = request.args.get('bike')
+        if bike_name:
+            session["bike_name"] = bike_name
+            
+        price = request.args.get('price')
+        if (price and price is not None) or price != '0':
+            cash_price = price
+            session["cash-price"] = cash_price
+            break
+        else:
+            
+            return redirect('https://hayballcyclesport.co.uk/')
 
     product_details = json.loads(os.getenv("PRODUCT_DETAILS"))
-
     products = []
     id_list = []
     for item in product_details:
@@ -38,15 +51,6 @@ def get_finance_products():
     session["products-list"] = products
     session["id-list"] = id_list
     product_value = 0
-    bike_name = request.args.get('bike')
-    if bike_name:
-        session["bike_name"] = bike_name
-
-    price = request.args.get('price')
-    if price:
-        cash_price = price
-        session["cash-price"] = cash_price
-
 
     if request.method == 'POST':
         product_id = int(request.form.get("product-dropdown"))
@@ -74,7 +78,7 @@ def get_finance_products():
         payload["Order"]["Deposit"] = deposit_amount
         payload["Order"]["ProductGuid"] = product_guid
         payload["Order"]["ProductId"] = str(product_id)
-        payload["Order"]["SalesReference"] = bike_name+str(random.randint(0,999999))
+        payload["Order"]["SalesReference"] = bike_name+str(datetime.datetime.now())
 
         payload["Retailer"]["AuthenticationKey"] = os.getenv("AuthenticationKey")
         payload["Retailer"]["RetailerGuid"] = os.getenv("RetailerGuid")
@@ -108,8 +112,7 @@ def get_finance_products():
 
 @app.route('/')
 def index():
-    return '<h1> REST API</h1>'
+    return redirect('https://hayballcyclesport.co.uk/')
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=800, debug=False)
- 
