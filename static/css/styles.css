@@ -109,6 +109,11 @@ input[type="range"]::-moz-range-thumb {
   text-align: center;
 }
 
+.bike-image-container {
+  width: 200px;
+  height: 200px;
+}
+
 select {
   width: 100%;
   padding: 10px;

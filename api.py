@@ -33,10 +33,14 @@ def get_finance_products():
             session["bike_name"] = bike_name
             
         price = request.args.get('price')
+        imageUrl = request.args.get('img')
         if (price and price is not None) or price != '0':
             cash_price = price
             session["cash-price"] = cash_price
+            if (imageUrl):
+                session["bikeImgUrl"] = imageUrl
             break
+        
         else:
             
             return redirect('https://hayballcyclesport.co.uk/')
